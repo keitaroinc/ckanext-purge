@@ -20,7 +20,7 @@ class Purger(CkanCommand):
       purger showdeleted
         - Displays the datasets marked as deleted
 
-    The commands should be run from the ckanext-harvest directory and expect
+    The commands should be run from the ckanext-purge directory and expect
     a development.ini file to be present. Most of the time you will
     specify the config explicitly though::
 

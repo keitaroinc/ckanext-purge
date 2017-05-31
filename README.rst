@@ -32,17 +32,14 @@
 ckanext-purge
 =============
 
-.. Put a description of your extension here:
-   What does it do? What features does it have?
-   Consider including some screenshots or embedding a video!
+A simple CKAN extension for purging datasets that are marked as deleted. 
 
 
 ------------
 Requirements
 ------------
 
-For example, you might want to mention here which versions of CKAN this
-extension works with.
+Requires CKAN 2.5+
 
 
 ------------
@@ -73,14 +70,24 @@ To install ckanext-purge:
 
 
 ---------------
-Config Settings
+Command line interface
 ---------------
 
-Document any optional config settings here. For example::
+The following operations can be run from the command line using the
+``paster --plugin=ckanext-purge purger`` command::
 
-    # The minimum number of hours to wait before re-checking a resource
-    # (optional, default: 24).
-    ckanext.purge.some_setting = some_default_value
+      purger showdeleted
+        - Displays the datasets marked as deleted
+
+      purger purgeall 
+        - Purges all of the deleted datasets
+
+    The commands should be run from the ckanext-purge directory and expect
+    a development.ini file to be present. Most of the time you will
+    specify the config explicitly though::
+
+        paster purger purgeall --config=../ckan/development.ini
+
 
 
 ------------------------
@@ -93,7 +100,6 @@ do::
     git clone https://github.com/keitaroinc/ckanext-purge.git
     cd ckanext-purge
     python setup.py develop
-    pip install -r dev-requirements.txt
 
 
 -----------------
