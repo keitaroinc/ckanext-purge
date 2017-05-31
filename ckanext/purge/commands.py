@@ -6,7 +6,7 @@ from ckan.logic import get_action, ValidationError
 
 import ckan.lib.base as base
 import ckan.model as model
-
+import ckan.lib.cli as c
 from ckan.lib.cli import CkanCommand
 
 class Purger(CkanCommand):
@@ -63,7 +63,6 @@ class Purger(CkanCommand):
         super(Purger, self)._load_config()
 
     def purge_all(self):
-        import ckan.lib.cli as c
         purge_queue = self.show_deleted()
 
         for el in purge_queue:
