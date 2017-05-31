@@ -7,7 +7,6 @@ from ckan.logic import get_action, ValidationError
 import ckan.lib.base as base
 import ckan.model as model
 
-
 from ckan.lib.cli import CkanCommand
 
 class Purger(CkanCommand):
@@ -64,10 +63,8 @@ class Purger(CkanCommand):
         super(Purger, self)._load_config()
 
     def purge_all(self):
-        print 'inside purge_all'
         import ckan.lib.cli as c
         purge_queue = self.show_deleted()
-        print purge_queue
 
         for el in purge_queue:
             site_user = get_action('get_site_user')({'ignore_auth': True}, {})
@@ -77,10 +74,6 @@ class Purger(CkanCommand):
             print '%s purged' % el
 
     def show_deleted(self):
-        print 'inside show_deleted'
-        import ckan.lib.base as base
-        import ckan.model as model
-
         c = base.c
         request = base.request
         _ = base._
@@ -90,6 +83,6 @@ class Purger(CkanCommand):
         marked_deleted = []
         for pkg in c.deleted_packages:
             marked_deleted.append(pkg.id)
-            print marked_deleted
+        print marked_deleted
 
         return marked_deleted
