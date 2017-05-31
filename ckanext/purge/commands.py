@@ -82,6 +82,6 @@ class Purger(CkanCommand):
         marked_deleted = []
         for pkg in c.deleted_packages:
             marked_deleted.append(pkg.id)
-        print marked_deleted
+            print '%s marked for purging' % pkg.id
 
         return marked_deleted
